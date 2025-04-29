@@ -1,26 +1,22 @@
 #include <iostream>
 
-namespace temperature_literals {
-    constexpr float operator"" _Kelvin(long double k) {
-        return static_cast<float>(k - 273.15);
-    }
+float operator"" _Kelvin(long double x) {
+	return static_cast<float>(x - 273.15);
+}
 
-    constexpr float operator"" _Kelvin(unsigned long long int k) {
-        return static_cast<float>(k - 273.15);
-    }
+float operator"" _Kelvin(unsigned long long x) {
+	return static_cast<float>(x - 273.15);
+}
 
-    constexpr float operator"" _Fahrenheit(long double f) {
-        return static_cast<float>((f - 32.0) * 5.0 / 9.0);
-    }
+float operator"" _Fahrenheit(long double x) {
+	return static_cast<float>(x - 32) / 1.8;
+}
 
-    constexpr float operator"" _Fahrenheit(unsigned long long int f) {
-        return static_cast<float>((f - 32.0) * 5.0 / 9.0);
-    }
+float operator"" _Fahrenheit(unsigned long long x) {
+	return static_cast<float>(x - 32) / 1.8;
 }
 
 int main() {
-    using namespace temperature_literals;
-
     float a = 300_Kelvin;
     float b = 120_Fahrenheit;
 
